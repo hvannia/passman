@@ -1,11 +1,12 @@
 import { randomBytes } from "crypto";
 import { getDb } from "./db";
-import type { VaultModel } from "./vault";
+import { encryptJson, decryptJson } from "./crypto";
+import type { VaultModel, KdfParams } from "./vault";
 
-export interface KdfParams {
-  timeCost: number;
-  memoryCost: number;
-  parallelism: number;
+export async function vaultInitialized(): Promise<boolean> {
+  const db = getDb();
+  const row = await db.get("SELECT value FROM meta WHERE key = 'kdf_salt'");
+  return !!row;
 }
 
 export async function writeKdfParams(appRef: Electron.App) {

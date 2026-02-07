@@ -1,15 +1,15 @@
 import { app, BrowserWindow, ipcMain, clipboard } from "electron";
 import path from "node:path";
+import { initDb } from "./db";
+import { deriveKey } from "./crypto";
 import {
-  initDb,
-  dbExists,
-  loadVaultEncrypted,
-  saveVaultEncrypted,
   readKdfParams,
   writeKdfParams,
-} from "./db";
-import { deriveKey, encryptJson, decryptJson } from "./crypto";
-import { VaultModel, EntryInput, EntrySummary, VaultEntry } from "./vault";
+  loadVaultEncrypted,
+  saveVaultEncrypted,
+  vaultInitialized,
+} from "./helpers";
+import type { VaultModel, EntryInput, EntrySummary, VaultEntry } from "./vault";
 import { v4 as uuid } from "uuid";
 
 let win: BrowserWindow | null = null;
@@ -45,8 +45,8 @@ app.on("window-all-closed", () => {
 
 // IPC handlers
 ipcMain.handle("vault:unlock", async (_event, password: string) => {
-  const exists = await dbExists(app);
-  if (!exists) {
+  const initialized = await vaultInitialized();
+  if (!initialized) {
     // first run: create empty vault
     const { salt, params } = await writeKdfParams(app);
     const key = await deriveKey(password, salt, params);

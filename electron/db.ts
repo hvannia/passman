@@ -1,7 +1,6 @@
 //For a first cut, AES‑GCM + single blob is fine. Rough idea:
 
 import path from "node:path";
-import { app } from "electron";
 import sqlite3 from "sqlite3";
 import { open, Database } from "sqlite";
 
@@ -36,13 +35,8 @@ export async function initDb(appRef: Electron.App) {
   }
 }
 
-function getDb(): Database {
+export function getDb(): Database {
   if (!db) throw new Error("DB not initialized");
   return db;
 }
 
-export async function dbExists(appRef: Electron.App): Promise<boolean> {
-  const userData = appRef.getPath("userData");
-  const dbPath = path.join(userData, "vault.sqlite");
-  return require("fs").existsSync(dbPath);
-}

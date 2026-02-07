@@ -1,6 +1,6 @@
 import { randomBytes, createCipheriv, createDecipheriv } from "crypto";
 import argon2 from "argon2";
-import type { KdfParams } from "../db";
+import type { KdfParams } from "./vault";
 
 export async function deriveKey(
   password: string,

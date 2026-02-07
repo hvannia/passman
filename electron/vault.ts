@@ -25,6 +25,12 @@ export interface EntryInput {
   tags: string[];
 }
 
+export interface KdfParams {
+  timeCost: number;
+  memoryCost: number;
+  parallelism: number;
+}
+
 export interface EntrySummary {
   id: string;
   title: string;
