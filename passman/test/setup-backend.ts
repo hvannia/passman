@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import { vi } from "vitest";
 import { createHash } from "crypto";
 
