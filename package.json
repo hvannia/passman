@@ -1,0 +1,20 @@
+{
+  "name": "passman-electron",
+  "private": true,
+  "version": "0.0.0",
+  "main": "electron-dist/main.js",
+  "scripts": {
+    "start": "cd passman && npm run build && cd .. && tsc -p tsconfig.electron.json && electron ."
+  },
+  "dependencies": {
+    "argon2": "^0.41.1",
+    "electron": "^40.2.1",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@types/uuid": "^10.0.0",
+    "typescript": "~5.9.3"
+  }
+}

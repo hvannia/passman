@@ -31,7 +31,7 @@ function createWindow() {
   });
 
   // load your Vite-built index.html
-  win.loadFile(path.join(__dirname, "../dist/index.html"));
+  win.loadFile(path.join(__dirname, "../passman/dist/index.html"));
 }
 
 app.whenReady().then(async () => {
