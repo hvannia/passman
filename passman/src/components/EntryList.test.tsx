@@ -16,6 +16,9 @@ describe("EntryList", () => {
     onSearchChange: vi.fn(),
     onSelect: vi.fn(),
     onCreate: vi.fn(),
+    allTags: ["dev", "email"],
+    selectedTag: null,
+    onTagSelect: vi.fn(),
   };
 
   it("renders all entries", () => {

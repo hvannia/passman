@@ -11,7 +11,10 @@ export default function VaultView({ onLock }: { onLock: () => void }) {
   const [selectedEntry, setSelectedEntry] = useState<VaultEntry | null>(null);
   const [mode, setMode] = useState<Mode>("view");
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [initialized, setInitialized] = useState(false);
+
+  const allTags = [...new Set(entries.flatMap((e) => e.tags))].sort();
 
   // Load entries on first render via ref callback (avoids setState-in-effect lint error)
   const initRef = (node: HTMLDivElement | null) => {
@@ -89,6 +92,9 @@ export default function VaultView({ onLock }: { onLock: () => void }) {
           onSearchChange={setSearchQuery}
           onSelect={handleSelect}
           onCreate={handleCreate}
+          allTags={allTags}
+          selectedTag={selectedTag}
+          onTagSelect={setSelectedTag}
         />
       </div>
 

@@ -7,6 +7,9 @@ export default function EntryList({
   onSearchChange,
   onSelect,
   onCreate,
+  allTags,
+  selectedTag,
+  onTagSelect,
 }: {
   entries: EntrySummary[];
   selectedId: string | null;
@@ -14,9 +17,15 @@ export default function EntryList({
   onSearchChange: (q: string) => void;
   onSelect: (id: string) => void;
   onCreate: () => void;
+  allTags: string[];
+  selectedTag: string | null;
+  onTagSelect: (tag: string | null) => void;
 }) {
+  const tagFiltered = selectedTag
+    ? entries.filter((e) => e.tags.includes(selectedTag))
+    : entries;
   const query = searchQuery.toLowerCase();
-  const filtered = entries.filter(
+  const filtered = tagFiltered.filter(
     (e) =>
       e.title.toLowerCase().includes(query) ||
       e.username.toLowerCase().includes(query) ||
@@ -35,6 +44,23 @@ export default function EntryList({
           className="w-full rounded border border-zinc-600 bg-zinc-700 px-3 py-2 text-sm text-zinc-100 placeholder-zinc-400 focus:border-purple-500 focus:outline-none"
         />
       </div>
+      {allTags.length > 0 && (
+        <div className="flex flex-wrap gap-1 px-3 pb-2">
+          {allTags.map((tag) => (
+            <button
+              key={tag}
+              onClick={() => onTagSelect(selectedTag === tag ? null : tag)}
+              className={`rounded-full px-2 py-0.5 text-xs transition-colors ${
+                selectedTag === tag
+                  ? "bg-purple-600 text-white"
+                  : "bg-zinc-700 text-zinc-300 hover:bg-zinc-600"
+              }`}
+            >
+              {tag}
+            </button>
+          ))}
+        </div>
+      )}
       <div className="flex-1 overflow-y-auto">
         {filtered.length === 0 && (
           <p className="px-3 py-6 text-center text-sm text-zinc-500">
