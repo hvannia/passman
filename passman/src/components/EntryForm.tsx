@@ -37,7 +37,7 @@ export default function EntryForm({
   }
 
   const inputClass =
-    "w-full rounded border border-zinc-600 bg-zinc-700 px-3 py-2 text-zinc-100 placeholder-zinc-400 focus:border-blue-500 focus:outline-none";
+    "w-full rounded border border-zinc-600 bg-zinc-700 px-3 py-2 text-zinc-100 placeholder-zinc-400 focus:border-purple-500 focus:outline-none";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
@@ -88,13 +88,18 @@ export default function EntryForm({
         <button
           type="button"
           onClick={() => setShowGenerator(!showGenerator)}
-          className="mt-2 text-sm text-blue-400 hover:text-blue-300"
+          className="mt-2 text-sm text-purple-400 hover:text-purple-300"
         >
           {showGenerator ? "Hide generator" : "Generate password"}
         </button>
         {showGenerator && (
           <div className="mt-2">
-            <PasswordGenerator onUse={(pw) => { setPassword(pw); setShowGenerator(false); }} />
+            <PasswordGenerator
+              onUse={(pw) => {
+                setPassword(pw);
+                setShowGenerator(false);
+              }}
+            />
           </div>
         )}
       </div>
@@ -135,7 +140,7 @@ export default function EntryForm({
         <button
           type="submit"
           disabled={!title || !username || !password}
-          className="rounded bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-500 disabled:opacity-50"
+          className="rounded bg-purple-800 px-4 py-2 font-medium text-white hover:bg-purple-500 disabled:opacity-50"
         >
           {initial ? "Save Changes" : "Create Entry"}
         </button>

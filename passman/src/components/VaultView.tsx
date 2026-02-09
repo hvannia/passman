@@ -70,7 +70,7 @@ export default function VaultView({ onLock }: { onLock: () => void }) {
   const selectedId = selectedEntry?.id ?? null;
 
   return (
-    <div ref={initRef} className="flex h-screen bg-zinc-900 text-zinc-100">
+    <div ref={initRef} className="flex h-screen text-zinc-100">
       {/* Sidebar */}
       <div className="flex w-72 flex-col border-r border-zinc-700 bg-zinc-800">
         <div className="flex items-center justify-between border-b border-zinc-700 px-3 py-3">

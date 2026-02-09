@@ -38,7 +38,7 @@ export default function PasswordGenerator({
           <button
             type="button"
             onClick={() => onUse(generated)}
-            className="rounded bg-blue-600 px-3 py-1 text-sm text-white hover:bg-blue-500"
+            className="rounded bg-purple-800 px-3 py-1 text-sm text-white hover:bg-purple-500"
           >
             Use
           </button>

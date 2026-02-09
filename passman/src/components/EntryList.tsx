@@ -32,7 +32,7 @@ export default function EntryList({
           value={searchQuery}
           onChange={(e) => onSearchChange(e.target.value)}
           placeholder="Search entries..."
-          className="w-full rounded border border-zinc-600 bg-zinc-700 px-3 py-2 text-sm text-zinc-100 placeholder-zinc-400 focus:border-blue-500 focus:outline-none"
+          className="w-full rounded border border-zinc-600 bg-zinc-700 px-3 py-2 text-sm text-zinc-100 placeholder-zinc-400 focus:border-purple-500 focus:outline-none"
         />
       </div>
       <div className="flex-1 overflow-y-auto">
@@ -69,7 +69,7 @@ export default function EntryList({
       <div className="border-t border-zinc-700 p-3">
         <button
           onClick={onCreate}
-          className="w-full rounded bg-blue-600 px-3 py-2 text-sm font-medium text-white hover:bg-blue-500"
+          className="w-full rounded bg-purple-800 px-3 py-2 text-sm font-medium text-white hover:purple-500"
         >
           + New Entry
         </button>
