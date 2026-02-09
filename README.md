@@ -2,6 +2,50 @@
 
 Local, single-device password manager. Electron desktop app with React frontend.
 
+## Getting Started
+
+### Prerequisites
+
+- **Node.js** v20.18+
+- **npm**
+- A C++ compiler for native modules (`argon2`, `sqlite3`):
+  - **macOS:** Xcode Command Line Tools (`xcode-select --install`)
+  - **Linux:** `build-essential` (`sudo apt install build-essential`)
+  - **Windows:** `windows-build-tools` (`npm install -g windows-build-tools`)
+
+### Setup
+
+```sh
+# Clone the repo
+git clone <repo-url>
+cd passman
+
+# Install root dependencies (Electron, SQLite, Argon2)
+npm install
+
+# Install frontend dependencies (React, Vite, Tailwind)
+cd passman
+npm install
+cd ..
+
+# Launch the app
+npm start
+```
+
+`npm start` builds the React frontend, compiles the Electron backend, and launches the app.
+
+### Other Commands
+
+Run from the `passman/` directory:
+
+| Command | Purpose |
+|---|---|
+| `npm run dev` | Vite dev server with HMR (frontend only) |
+| `npm test` | Run all tests |
+| `npm run test:watch` | Vitest watch mode |
+| `npm run lint` | ESLint |
+| `npm run build` | Production build |
+
 ## High Level
 
 ### Behavior
