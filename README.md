@@ -34,6 +34,21 @@ npm start
 
 `npm start` builds the React frontend, compiles the Electron backend, and launches the app.
 
+### Build macOS App
+
+To package Passman as a standalone macOS `.app` and `.dmg`:
+
+```sh
+npm run dist
+```
+
+This builds the frontend, compiles the Electron backend, rebuilds native modules, and produces:
+
+- `dist/mac/Passman.app` — the macOS application bundle
+- `dist/Passman-1.0.0.dmg` — a DMG installer for distribution
+
+> **Note:** The app will be unsigned unless you have an Apple Developer certificate configured. For personal use, right-click the app and select "Open" to bypass Gatekeeper.
+
 ### Other Commands
 
 Run from the `passman/` directory:
@@ -45,6 +60,13 @@ Run from the `passman/` directory:
 | `npm run test:watch` | Vitest watch mode |
 | `npm run lint` | ESLint |
 | `npm run build` | Production build |
+
+Run from the project root:
+
+| Command | Purpose |
+|---|---|
+| `npm start` | Build and launch the app in dev mode |
+| `npm run dist` | Package as macOS `.app` and `.dmg` |
 
 ## High Level
 
