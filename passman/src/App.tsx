@@ -1,7 +1,7 @@
 import { useState } from "react";
 import UnlockScreen from "./components/UnlockScreen";
 import VaultView from "./components/VaultView";
-import bgImage from "./assets/indy.png";
+import bgImage from "./assets/numerical_cat.jpg";
 
 export default function App() {
   const [unlocked, setUnlocked] = useState(false);
