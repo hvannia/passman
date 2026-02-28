@@ -3,3 +3,6 @@ electron-dist/
 
 SAST.md
 dist/
+cmds.md
+
+.DS_Store
